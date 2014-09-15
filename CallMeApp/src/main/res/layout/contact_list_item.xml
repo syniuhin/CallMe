@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:longClickable="true"
+                android:background="?android:attr/selectableItemBackground">
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/contact_name"
+            android:layout_alignParentLeft="true" android:layout_marginLeft="20dp"
+            android:layout_centerVertical="true" android:paddingBottom="10dp" android:textSize="20sp"
+            android:layout_toLeftOf="@+id/flipper_image" android:textStyle="bold" android:singleLine="true"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/contact_phone_number"
+            android:layout_alignLeft="@+id/contact_name"
+            android:layout_alignStart="@+id/contact_name"
+            android:layout_marginLeft="10dp"
+            android:paddingBottom="10dp"
+            android:textSize="16sp"
+            android:layout_toLeftOf="@+id/flipper_image"
+            android:layout_alignParentBottom="true" android:textColor="#AA151515" android:layout_marginTop="5dp"
+            android:singleLine="true"/>
+
+    <ViewFlipper
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:id="@+id/flipper_image"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp">
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/contact_pic"
+                android:layout_gravity="center"
+                android:src="@drawable/icon_contacts"/>
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/button_send"
+                android:layout_gravity="center"
+                android:src="@drawable/icon_phone"/>
+    </ViewFlipper>
+</RelativeLayout>

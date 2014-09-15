@@ -1,0 +1,11 @@
+.gradle
+.idea
+build
+local.properties
+*.iml
+
+#Crashlytics
+*com_crashlytics_export_strings.xml
+
+# OS auto generated files
+.DS_Store

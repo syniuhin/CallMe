@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Передзвоніть мені</string>
+    <string name="action_settings">Налаштування</string>
+    <string name="prefix_dialog_title">Вкажіть префікс до номеру</string>
+    <string name="prefix_dialog_et_hint">наприклад *104*</string>
+    <string name="prefix_dialog_description">Найчастіше це \'*104*\' для Life та MTС і \'*130*\' для Київстар</string>
+    <string name="prefix_is_invalid">Неправильний префікс</string>
+</resources>

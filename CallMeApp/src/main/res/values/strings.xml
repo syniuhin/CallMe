@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">CallMe</string>
+    <string name="action_settings">Settings</string>
+    <string name="prefix_dialog_title">Set number prefix</string>
+    <string name="prefix_dialog_et_hint">e.g. *104*</string>
+    <string name="prefix_dialog_description">Common prefixes are \'*104*\' for Life and MTS and \'*130*\' for Kyivstar</string>
+    <string name="prefix_is_invalid">Prefix is invalid</string>
+</resources>
