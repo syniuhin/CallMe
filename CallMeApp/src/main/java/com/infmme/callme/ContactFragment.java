@@ -29,6 +29,17 @@ public class ContactFragment extends Fragment implements
 		LoaderManager.LoaderCallbacks<Cursor> {
 
 	@SuppressLint("InlinedApi")
+	private static final String[] PROJECTION_OLD =
+			{
+					Data._ID,
+					Contacts._ID,
+					Phone._ID,
+					Contacts.LOOKUP_KEY,
+					Phone.DISPLAY_NAME,
+					Phone.NUMBER
+			};
+
+	@SuppressLint("InlinedApi")
 	private static final String[] PROJECTION =
 			{
 					Data._ID,
@@ -48,9 +59,10 @@ public class ContactFragment extends Fragment implements
 	public static final int PHONE_NUMBER_INDEX = 5;
 	public static final int PHOTO_THUMBNAIL_INDEX = 6;
 
+	public static final boolean isNewAPI = Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB;
 	@SuppressLint("InlinedApi")
 	private static final String NAME_SELECTION =
-			Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB ?
+			isNewAPI ?
 					Contacts.DISPLAY_NAME_PRIMARY + " LIKE ?" :
 					Contacts.DISPLAY_NAME + " LIKE ?";
 
@@ -99,10 +111,13 @@ public class ContactFragment extends Fragment implements
 		selectionArgs[0] = "%" + searchString + "%";
 
 		String sortOrder = Phone.DISPLAY_NAME + " COLLATE LOCALIZED ASC";
+		String[] projection = isNewAPI
+				? PROJECTION
+				: PROJECTION_OLD;
 		return new CursorLoader(
 				getActivity(),
 				Phone.CONTENT_URI,
-				PROJECTION,
+				projection,
 				NAME_SELECTION,
 				selectionArgs,
 				sortOrder
@@ -122,7 +137,8 @@ public class ContactFragment extends Fragment implements
 					!numberSet.contains(contactNumber) &&
 					TextUtils.isDigitsOnly(contactNumber)){
 				numberSet.add(contactNumber);
-				matrixCursor.addRow(new Object[]{
+				Object[] data = isNewAPI
+						? new Object[]{
 						cursor.getString(DATA_ID_INDEX),
 						cursor.getString(CONTACT_ID_INDEX),
 						cursor.getString(PHONE_ID_INDEX),
@@ -130,7 +146,16 @@ public class ContactFragment extends Fragment implements
 						cursor.getString(NAME_INDEX),
 						cursor.getString(PHONE_NUMBER_INDEX),
 						cursor.getString(PHOTO_THUMBNAIL_INDEX)
-				});
+						}
+						: new Object[]{
+						cursor.getString(DATA_ID_INDEX),
+						cursor.getString(CONTACT_ID_INDEX),
+						cursor.getString(PHONE_ID_INDEX),
+						cursor.getString(CONTACT_KEY_INDEX),
+						cursor.getString(NAME_INDEX),
+						cursor.getString(PHONE_NUMBER_INDEX)
+						};
+				matrixCursor.addRow(data);
 			}
 
 			cursor.moveToNext();
