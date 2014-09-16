@@ -4,7 +4,7 @@
     <string name="app_name">Перезвони мне</string>
     <string name="action_settings">Настройки</string>
     <string name="prefix_dialog_title">Укажите префикс номера</string>
-    <string name="prefix_dialog_et_hint">например *104*</string>
+    <string name="prefix_dialog_et_hint">например, *104*</string>
     <string name="prefix_dialog_description">Распространённые префиксы - \'*104*\' для Life и MTС, \'*130*\' для Киевстар</string>
     <string name="prefix_is_invalid">Неправильный префикс</string>
 </resources>
