@@ -17,7 +17,7 @@ android {
     buildToolsVersion "20.0.0"
 
     defaultConfig {
-        applicationId "com.example.callme.callmeapp"
+        applicationId "com.infmme.callme"
         minSdkVersion 9
         targetSdkVersion 20
         versionCode 1
